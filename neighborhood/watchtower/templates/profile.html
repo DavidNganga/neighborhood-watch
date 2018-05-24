@@ -1,4 +1,4 @@
-{% load bootstrap3 %} {% load staticfiles %}
+{% load bootstrap3 %} {% load staticfiles %} {%block content%}
 <!DOCTYPE html>
 <html>
 
@@ -7,7 +7,7 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
 
  <title>New Profile</title>
- {{form.media}}
+
 
 {% block styles %} {% bootstrap_css %}
  <link rel="stylesheet" href="{% static 'css/base.css' %}"> {% endblock %}
@@ -23,11 +23,13 @@
    <div class="panel-body">
 
  <form  action="{%url 'profile'%}" method="post" enctype="multipart/form-data">
-   {%csrf_token%}
+   {%csrf_token%
 
-   {% bootstrap_form form%}
+   {% bootstrap_form form layout = 'inline' %}
    <input type="submit" class="btn btn-success btn-lg" value="create">
  </form>
 </div>
-
 </div>
+</body>
+</html>
+{% endblock %}

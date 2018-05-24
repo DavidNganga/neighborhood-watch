@@ -8,16 +8,14 @@ def watch(request):
 def profile(request):
     current_user = request.user
     if request.method == 'POST':
-        '''
-        form to edit profile once a user is registered
-        '''
+
         form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
 
             profile = form.save(commit=False)
             Profile.user = current_user
             profile.save()
-            return redirect('profile')
+            return redirect('watch')
     else:
-            form = ProfileForm()
+        form = ProfileForm()
     return render(request, 'profile.html', {"form": form})
