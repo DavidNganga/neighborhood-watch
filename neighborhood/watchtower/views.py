@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import ProfileForm
+from .forms import ProfileForm,PostForm
 from .models import User
 # Create your views here.
 def watch(request):
@@ -8,10 +8,8 @@ def watch(request):
 def profile(request):
     current_user = request.user
     if request.method == 'POST':
-
         form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
-
             profile = form.save(commit=False)
             Profile.user = current_user
             profile.save()
@@ -29,3 +27,16 @@ def search(request):
     else:
         message="You haven't searched for any term"
         return render(request,'search.html',{"message":message})
+
+def post(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = PostForm(request.POST,request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            # Post.user = current_user
+            post.save()
+            return redirect('watch')
+    else:
+        form = PostForm()
+    return render(request, 'post.html',{"form":form})

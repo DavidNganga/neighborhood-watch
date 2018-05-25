@@ -5,7 +5,7 @@ class Neighborhood(models.Model):
     name = models.CharField(max_length=50)
     location=models.CharField(max_length=50)
     no_occupants=models.IntegerField()
-    event = models.TextField(maxcdn=250)
+    event = models.TextField(max_length=250)
 
     @classmethod
     def get_all(cls):
@@ -84,3 +84,8 @@ class Parastatal(models.Model):
     name = models.CharField(max_length=50)
     neighborhood = models.ForeignKey(Neighborhood, related_name='neighbor_parastatal',null=True)
     phone_number = models.IntegerField()
+
+class Post(models.Model):
+
+    neighborhood= models.ForeignKey(Neighborhood,related_name='post_parastatal', null=True)
+    event = models.TextField(max_length=50)
