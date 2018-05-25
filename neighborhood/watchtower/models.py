@@ -30,11 +30,11 @@ class Neighborhood(models.Model):
          names = cls.objects.filter(name__icontains=search_term)
          return names
 
-class User(models.Model):
+class Profile(models.Model):
     name = models.CharField(max_length=50)
     neighborhood = models.ForeignKey(Neighborhood, related_name='user_nieghborhood',null=True)
     email=models.CharField(max_length=50)
-    user_id = models.PositiveIntegerField(primary_key=True)
+
 
     @classmethod
     def get_all(cls):

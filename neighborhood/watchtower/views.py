@@ -11,7 +11,7 @@ def profile(request):
         form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
             profile = form.save(commit=False)
-            Profile.user = current_user
+            profile.user = current_user
             profile.save()
             return redirect('watch')
     else:
