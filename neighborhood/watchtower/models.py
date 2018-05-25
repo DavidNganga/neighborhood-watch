@@ -5,6 +5,7 @@ class Neighborhood(models.Model):
     name = models.CharField(max_length=50)
     location=models.CharField(max_length=50)
     no_occupants=models.IntegerField()
+    event = models.TextField(maxcdn=250)
 
     @classmethod
     def get_all(cls):
