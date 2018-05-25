@@ -23,9 +23,9 @@
    <div class="panel-body">
 
  <form  action="{%url 'profile'%}" method="post" enctype="multipart/form-data">
-   {%csrf_token%
+   {%csrf_token%}
 
-   {% bootstrap_form form layout = 'inline' %}
+   {% bootstrap_form form %}
    <input type="submit" class="btn btn-success btn-lg" value="create">
  </form>
 </div>

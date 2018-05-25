@@ -1,0 +1,34 @@
+{%extends 'base.html'%}
+{% block content %}
+<div class="container">
+
+  <div class="row">
+
+  </div>
+
+<p>fgfhdgfvh</p>
+
+
+</div>
+{% if businesses %}
+  {% for business in businesses %}
+
+<div class="col-sm-4">
+
+  {% if destinations%}
+    <!-- <h2>Found {{ businesses|length }} to destination {{message}}</h2> -->
+  {% else %}
+    <!-- <h2> Found 0 drivers to the destination  {{message}}</h2> -->
+  {% endif %}
+
+
+                <!-- <div class="card">
+                    <div class="card-body">
+
+                        <p class="card-text">   <h1>Driver:{{destination.driver_name}}</h1></p>
+                        <p class="card-text">   <h1>Number:{{destination.driver_phone}}</h1></p>
+
+                    </div> -->
+                    {% endfor %}
+                  {% endif %}
+{% endblock %}

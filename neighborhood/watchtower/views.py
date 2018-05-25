@@ -19,3 +19,13 @@ def profile(request):
     else:
         form = ProfileForm()
     return render(request, 'profile.html', {"form": form})
+
+def search(request):
+    if 'name' in request.GET and request.GET["name"]:
+        search_term = request.GET.get("name")
+        businesses = Business.search(search_term)
+        message = f"{search_term}"
+        return render(request,'search.html',{"message":message,"businesses":businesses})
+    else:
+        message="You haven't searched for any term"
+        return render(request,'search.html',{"message":message})
