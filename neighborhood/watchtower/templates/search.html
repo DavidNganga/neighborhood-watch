@@ -10,15 +10,15 @@
 
 
 </div>
-{% if businesses %}
-  {% for business in businesses %}
+{% if neighborhoods %}
+  {% for neighborhood in neighborhoods %}
 
 <div class="col-sm-4">
 
-  {% if destinations%}
-    <!-- <h2>Found {{ businesses|length }} to destination {{message}}</h2> -->
+  {% if neighborhoods%}
+    <h2>Found {{ neighborhoods|length }}  {{message}}</h2>
   {% else %}
-    <!-- <h2> Found 0 drivers to the destination  {{message}}</h2> -->
+     <h2> Found 0 neighborhoods t {{message}}</h2> -->
   {% endif %}
 
 

@@ -5,7 +5,7 @@ class Neighborhood(models.Model):
     name = models.CharField(max_length=50)
     location=models.CharField(max_length=50)
     no_occupants=models.IntegerField()
-    event = models.TextField(max_length=250)
+
 
     @classmethod
     def get_all(cls):
@@ -25,6 +25,10 @@ class Neighborhood(models.Model):
         names = cls.objects.get(id=id)
         return names
 
+    @classmethod
+    def search(cls,search_term):
+         names = cls.objects.filter(name__icontains=search_term)
+         return names
 
 class User(models.Model):
     name = models.CharField(max_length=50)

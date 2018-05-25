@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .forms import ProfileForm,PostForm
-from .models import User
+from .models import User,Neighborhood,Business,Parastatal,Post
 # Create your views here.
 def watch(request):
     return render(request, 'index.html')
@@ -21,9 +21,11 @@ def profile(request):
 def search(request):
     if 'name' in request.GET and request.GET["name"]:
         search_term = request.GET.get("name")
-        businesses = Business.search(search_term)
+
+        neighborhoods = Neighborhood.search(search_term)
         message = f"{search_term}"
-        return render(request,'search.html',{"message":message,"businesses":businesses})
+        print(neighborhoods)
+        return render(request,'search.html',{"message":message,"neighborhoods":neighborhoods})
     else:
         message="You haven't searched for any term"
         return render(request,'search.html',{"message":message})
