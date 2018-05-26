@@ -1,4 +1,4 @@
-from .models import Profile,Neighborhood,Post
+from .models import Profile,Neighborhood
 from django import forms
 
 class ProfileForm(forms.ModelForm):
@@ -6,8 +6,8 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields=['name','neighborhood','email']
 
-class PostForm(forms.ModelForm):
+class NeighborhoodForm(forms.ModelForm):
     class Meta:
-        model = Post
-        fields=['neighborhood','event']
-        exclude =[]
+        model = Neighborhood
+        fields=['name','location','event']
+        exclude =['no_occupants']

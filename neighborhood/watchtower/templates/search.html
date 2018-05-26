@@ -3,32 +3,32 @@
 <div class="container">
 
   <div class="row">
+    {% if neighborhoods%}
+      <!-- <h2>Found {{ neighborhoods|length }}  {{message}}</h2> -->
+    {% else %}
+       <h2> Found 0 neighborhoods t {{message}}</h2> -->
+    {% endif %}
+    </div>
 
   </div>
 
-<p>fgfhdgfvh</p>
 
-
-</div>
 {% if neighborhoods %}
   {% for neighborhood in neighborhoods %}
+  <div class="container mt-2">
+    <div class="row">
+      <div class="col- mx-auto p-5" style="background-color:#ffffff; border: 1px solid #e6e6e6;">
+        <div class="profile p-4" style="white-space:nowrap">
+              <h1> {{message}}</h1>
+              
+        </div>
+      </div>
+    </div>
+{% endfor %}
+{% endif %}
 
-<div class="col-sm-4">
 
-  {% if neighborhoods%}
-    <h2>Found {{ neighborhoods|length }}  {{message}}</h2>
-  {% else %}
-     <h2> Found 0 neighborhoods t {{message}}</h2> -->
-  {% endif %}
-
-
-                <!-- <div class="card">
-                    <div class="card-body">
-
-                        <p class="card-text">   <h1>Driver:{{destination.driver_name}}</h1></p>
-                        <p class="card-text">   <h1>Number:{{destination.driver_phone}}</h1></p>
-
-                    </div> -->
-                    {% endfor %}
-                  {% endif %}
+{%for post in posts%}
+<h2> <a href="{%url 'viewpost' post.id %}">{{post.name}}</a>     </h2>
+{%endfor%}
 {% endblock %}
