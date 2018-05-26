@@ -9,5 +9,5 @@ class ProfileForm(forms.ModelForm):
 class NeighborhoodForm(forms.ModelForm):
     class Meta:
         model = Neighborhood
-        fields=['name','location','event']
+        fields=['name','location','event_details']
         exclude =['no_occupants']
