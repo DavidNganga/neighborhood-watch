@@ -2,16 +2,21 @@
 {% load bootstrap3 %}
 {% load static%}
 {% block content %}
-<a href="{%url 'profile'%}">Join Watch</a>| <a href="{%url 'post'%}">Snitch</a>
+{% block styles %} {% bootstrap_css %}
+ <link rel="stylesheet" href="{% static 'css/base.css' %}"> {% endblock %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
 
-<!-- {%for event in events%}
-<p><{{event.name}}</p>
-</p>
-<br>
-<p>{{event.location}}</p>
-<br>
-<p>{{event.event_details}}</p>
-{%endfor%} -->
+<h3 class="text-center">
+    <a href="{% url 'profile' %}">Join Watch </a> |
+    <a href="{%url 'post'%}">Snitch </a> |
+    <a href="#">Businesses</a>
+</h3>
+</div>
+</div>
+</div>
+
 
 
 {% endblock %}
