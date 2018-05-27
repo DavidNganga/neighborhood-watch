@@ -3,7 +3,8 @@ from .forms import ProfileForm,NeighborhoodForm
 from .models import User,Neighborhood,Business,Parastatal
 # Create your views here.
 def watch(request):
-    return render(request, 'index.html')
+    events = Neighborhood.objects.all()
+    return render(request, 'index.html',{"events":events})
 
 def profile(request):
     current_user = request.user

@@ -2,7 +2,16 @@
 {% load bootstrap3 %}
 {% load static%}
 {% block content %}
+<a href="{%url 'profile'%}">Join Watch</a>| <a href="{%url 'post'%}">Snitch</a>
 
+<!-- {%for event in events%}
+<p><{{event.name}}</p>
+</p>
+<br>
+<p>{{event.location}}</p>
+<br>
+<p>{{event.event_details}}</p>
+{%endfor%} -->
 
 
 {% endblock %}
