@@ -49,3 +49,17 @@ def viewpost(request, neighborhood_id):
     posts = Neighborhood.objects.filter(id = neighborhood_id)
     return render(request,'viewpost.html',{"posts":posts,id:neighborhood_id})
 
+def business(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = BusinessForm(request.POST,request.FILES)
+        if form.is_valid():
+            business = form.save(commit=False)
+            # Post.user = current_user
+            business.save()
+            return redirect('watch')
+    else:
+        form = BusinessForm()
+    return render(request, 'business.html',{"form":form})
+
+
