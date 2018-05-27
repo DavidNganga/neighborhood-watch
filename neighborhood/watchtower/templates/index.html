@@ -4,17 +4,19 @@
 {% block content %}
 {% block styles %} {% bootstrap_css %}
  <link rel="stylesheet" href="{% static 'css/base.css' %}"> {% endblock %}
+
+
+
  <div class="container-fluid mt-4">
         <div class="jumbotron mt-4">
-          <h1 class="display-4 text-center">We see everything!</h1>
+          <h1 class="display-4 text-center">Neighborhood Watch!</h1>
+          <p class="lead text-center">We see everything!</p>
 </div>
 </div>
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
+
 <br>
 
 <div class="container-fluid">
@@ -22,9 +24,11 @@
         <div class="col-md-12">
 
 <h3 class="text-center">
-    <a href="{% url 'profile' %}">Join Watch </a> |
-    <a href="{%url 'post'%}">Snitch </a> |
-    <a href="#">Businesses</a>
+  
+    
+    <a class="btn btn-primary btn-lg"  href="{%url 'profile'%}" role="button" aria-expanded="false" aria-controls="collapseExample">Join Watch</a> 
+    <a class="btn btn-primary btn-lg"  href="{%url 'post'%}" role="button" aria-expanded="false" aria-controls="collapseExample">Snitch</a> 
+    <a class="btn btn-primary btn-lg"  href="#" role="button" aria-expanded="false" aria-controls="collapseExample">Businesses</a>
 </h3>
 </div>
 </div>
