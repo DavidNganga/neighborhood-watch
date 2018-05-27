@@ -1,0 +1,20 @@
+{%extends 'base.html'%}
+{% load static%}
+{% block content %}
+{% for business in businesses %}
+      
+    <div class="container-fluid mt-4">
+      <div class="jumbotron mt-4">
+        <p class="ml-2" style="display:inline; white-space:nowrap; font-size:25px;"> {{business.name}} </p>
+        <br>
+        <br>
+        <p class="ml-2" style="display:inline; white-space:nowrap; font-size:25px;">{{business.neighborhood}}</p>
+        <br>
+        <br>
+        <p class="ml-2" style="display:inline; white-space:nowrap; font-size:25px;">{{business.email}}</p>  
+</div>
+</div>
+    
+{%endfor%}
+     
+{% endblock %}

@@ -89,27 +89,6 @@ class Parastatal(models.Model):
     neighborhood = models.ForeignKey(Neighborhood, related_name='neighbor_parastatal',null=True)
     phone_number = models.IntegerField()
 
-# class Post(models.Model):
-#     name= models.CharField(max_length=50)
-#     neighborhood= models.ForeignKey(Neighborhood,related_name='post_parastatal', null=True)
-    
 
-#     @classmethod
-#     def get_all(cls):
-#         posts = cls.objects.all()
-#         return posts
-
-#     def __str__(self):
-#         return self.name
-
-#     def save_post(self):
-#         self.save()
-
-#     def delete_post(self):
-#         self.delete()
-
-#     def get_Post_by_id(cls,id):
-#         neighborhood = cls.objects.get(id=id)
-#         return names
 
     

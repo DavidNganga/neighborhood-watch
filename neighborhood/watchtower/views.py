@@ -1,10 +1,11 @@
 from django.shortcuts import render,redirect
-from .forms import ProfileForm,NeighborhoodForm
+from .forms import ProfileForm,NeighborhoodForm,BusinessForm
 from .models import User,Neighborhood,Business,Parastatal
 # Create your views here.
 def watch(request):
     neighborhoods = Neighborhood.objects.all()
-    return render(request, 'index.html',{"neighborhoods":neighborhoods})
+    businesses = Business.objects.all()
+    return render(request, 'index.html',{"neighborhoods":neighborhoods,"businesses":businesses})
 
 def profile(request):
     current_user = request.user
@@ -32,7 +33,8 @@ def search(request):
         return render(request,'search.html',{"message":message})
 
 def post(request):
-    current_user = request.user
+    current_user = request.user.id
+    
     if request.method == 'POST':
         form = NeighborhoodForm(request.POST,request.FILES)
         if form.is_valid():
@@ -43,11 +45,6 @@ def post(request):
     else:
         form = NeighborhoodForm()
     return render(request, 'post.html',{"form":form})
-
-def viewpost(request, neighborhood_id):
-
-    posts = Neighborhood.objects.filter(id = neighborhood_id)
-    return render(request,'viewpost.html',{"posts":posts,id:neighborhood_id})
 
 def business(request):
     current_user = request.user
@@ -61,5 +58,20 @@ def business(request):
     else:
         form = BusinessForm()
     return render(request, 'business.html',{"form":form})
+
+def viewpost(request, neighborhood_id):
+
+    posts = Neighborhood.objects.filter(id = neighborhood_id)
+    return render(request,'viewpost.html',{"posts":posts,id:neighborhood_id})
+
+def viewbusiness(request):
+    current_user=request.user
+    # neighborhoods= Neighborhood.objects.all()
+    businesses=Business.objects.all()
+    return render(request,'viewbusiness.html',{"businesses":businesses})
+
+
+
+
 
 
