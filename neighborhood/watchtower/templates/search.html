@@ -20,7 +20,8 @@
       <div class="col- mx-auto p-5" style="background-color:#ffffff; border: 1px solid #e6e6e6;">
         <div class="profile p-4" style="white-space:nowrap">
               <h1> Hood:{{message}}</h1>
-              <h2>Event:<a href="{%url 'viewpost' neighborhood.id %}">{{neighborhood.event_details}}</a></h2>
+              <h2>Event:{{neighborhood.event_details}}</h2>
+              <p><a href="{%url 'viewpost' neighborhood.id %}">more details</a></p>
               
         </div>
       </div>
