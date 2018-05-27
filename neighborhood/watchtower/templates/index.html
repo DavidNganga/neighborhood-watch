@@ -4,6 +4,19 @@
 {% block content %}
 {% block styles %} {% bootstrap_css %}
  <link rel="stylesheet" href="{% static 'css/base.css' %}"> {% endblock %}
+ <div class="container-fluid mt-4">
+        <div class="jumbotron mt-4">
+          <h1 class="display-4 text-center">We see everything!</h1>
+</div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
@@ -16,6 +29,12 @@
 </div>
 </div>
 </div>
+
+<!-- {%for neighborhood in neighborhoods  %}
+<p>  <a href="{%url 'viewpost' neighborhood.id%}"> {{neighborhood.name}}</a></p>
+<p>{{ neighborhood.location }}</p>
+<p>{{ neighborhood.event_details }}</p>
+{%endfor%} -->
 
 
 
