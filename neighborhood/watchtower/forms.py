@@ -4,12 +4,13 @@ from django import forms
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields=['name','neighborhood','email','user']
+        fields=['name','neighborhood','email']
+        exclude =['user']
 
 class NeighborhoodForm(forms.ModelForm):
     class Meta:
         model = Neighborhood
-        fields=['name','location','event_details']
+        fields=['name','location','event_details','user']
         exclude =['no_occupants']
 
 class EstablishmentForm(forms.ModelForm):

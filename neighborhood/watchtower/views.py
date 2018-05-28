@@ -2,12 +2,15 @@ from django.shortcuts import render,redirect
 from .forms import ProfileForm,NeighborhoodForm,EstablishmentForm
 from .models import User,Neighborhood,Establishment,Parastatal
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 # Create your views here.
 @login_required
 def watch(request):
-    neighborhoods = Neighborhood.objects.all()
+    current_user=request.user
+    neighborhoods = Neighborhood.objects.all().filter(user=current_user)
+    posts = Neighborhood.objects.all()
     establishments =Establishment.objects.all()
-    return render(request, 'index.html',{"neighborhoods":neighborhoods,"establishments":establishments})
+    return render(request, 'index.html',{"establishments":establishments,"posts":posts,"neighborhoods":neighborhoods})
 
 def profile(request):
     current_user = request.user
@@ -61,10 +64,10 @@ def establishment(request):
         form = EstablishmentForm()
     return render(request, 'establishment.html',{"form":form})
 
-def viewpost(request, neighborhood_id):
+def viewpost(request,neighborhood_id):
 
-    posts = Neighborhood.objects.filter(id = neighborhood_id)
-    return render(request,'viewpost.html',{"posts":posts,id:neighborhood_id})
+    neighborhood = Neighborhood.objects.get(id = neighborhood_id)
+    return render(request,'viewpost.html',{id:neighborhood_id,"neighborhood":neighborhood})
 
 def viewestablishment(request):
     current_user=request.user
