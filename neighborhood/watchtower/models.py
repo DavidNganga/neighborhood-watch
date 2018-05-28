@@ -59,6 +59,7 @@ class Business(models.Model):
     email = models.CharField(max_length=50)
     user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     neighborhood= models.ForeignKey(Neighborhood, on_delete=models.CASCADE,null=True)
+    description =models.TextField(max_length=250)
 
     @classmethod
     def get_all(cls):
@@ -88,7 +89,3 @@ class Parastatal(models.Model):
     name = models.CharField(max_length=50)
     neighborhood = models.ForeignKey(Neighborhood, related_name='neighbor_parastatal',null=True)
     phone_number = models.IntegerField()
-
-
-
-    
