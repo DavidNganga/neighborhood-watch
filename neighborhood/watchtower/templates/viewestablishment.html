@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+{% load static%}
+{% block content %}
+{% for establishment in establishments %}
+
+    <div class="container-fluid mt-4">
+      <div class="jumbotron mt-4">
+        <p class="ml-2" style="display:inline; white-space:nowrap; font-size:25px;"> {{establishment.name}} </p>
+        <br>
+        <br>
+        <p class="ml-2" style="display:inline; white-space:nowrap; font-size:25px;">{{establishment.neighborhood}}</p>
+        <br>
+        <br>
+        <p class="ml-2" style="display:inline; white-space:nowrap; font-size:25px;">{{establishment.email}}</p>
+        <br>
+        <br>
+        <p class="ml-2" style="display:inline; white-space:nowrap; font-size:25px;">{{establishment.description}}</p>
+</div>
+</div>
+
+{%endfor%}
+
+{% endblock %}

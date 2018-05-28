@@ -6,8 +6,8 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def watch(request):
     neighborhoods = Neighborhood.objects.all()
-    businesses = Business.objects.all()
-    return render(request, 'index.html',{"neighborhoods":neighborhoods,"businesses":businesses})
+    establishments =Establishment.objects.all()
+    return render(request, 'index.html',{"neighborhoods":neighborhoods,"establishments":establishments})
 
 def profile(request):
     current_user = request.user
@@ -26,10 +26,10 @@ def search(request):
     if 'name' in request.GET and request.GET["name"]:
         search_term = request.GET.get("name")
 
-        neighborhoods = Neighborhood.search(search_term)
+        establishments = Establishment.search(search_term)
         message = f"{search_term}"
-        print(neighborhoods)
-        return render(request,'search.html',{"message":message,"neighborhoods":neighborhoods})
+        print(establishments)
+        return render(request,'search.html',{"message":message,"establishments":establishments})
     else:
         message="You haven't searched for any term"
         return render(request,'search.html',{"message":message})
@@ -48,26 +48,26 @@ def post(request):
         form = NeighborhoodForm()
     return render(request, 'post.html',{"form":form})
 
-def business(request):
+def establishment(request):
     current_user = request.user
     if request.method == 'POST':
-        form = BusinessForm(request.POST,request.FILES)
+        form = EstablishmentForm(request.POST,request.FILES)
         if form.is_valid():
-            business = form.save(commit=False)
+            establishment = form.save(commit=False)
             # Post.user = current_user
-            business.save()
+            establishment.save()
             return redirect('watch')
     else:
-        form = BusinessForm()
-    return render(request, 'business.html',{"form":form})
+        form = EstablishmentForm()
+    return render(request, 'establishment.html',{"form":form})
 
 def viewpost(request, neighborhood_id):
 
     posts = Neighborhood.objects.filter(id = neighborhood_id)
     return render(request,'viewpost.html',{"posts":posts,id:neighborhood_id})
 
-def viewbusiness(request):
+def viewestablishment(request):
     current_user=request.user
     # neighborhoods= Neighborhood.objects.all()
-    businesses=Business.objects.all()
-    return render(request,'viewbusiness.html',{"businesses":businesses})
+    establishments=Establishment.objects.all()
+    return render(request,'viewestablishment.html',{"establishments":establishments})

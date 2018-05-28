@@ -6,6 +6,8 @@ class Neighborhood(models.Model):
     location=models.CharField(max_length=50)
     no_occupants=models.IntegerField(null=True)
     event_details = models.TextField(max_length=50)
+    user=models.ForeignKey(User)
+    
 
     @classmethod
     def get_all(cls):
@@ -34,7 +36,7 @@ class Profile(models.Model):
     name = models.CharField(max_length=50)
     neighborhood = models.ForeignKey(Neighborhood, related_name='user_nieghborhood',null=True)
     email=models.CharField(max_length=50)
-
+    user = models.OneToOneField(User, on_delete=models.CASCADE,null=True)
 
     @classmethod
     def get_all(cls):
@@ -53,6 +55,10 @@ class Profile(models.Model):
     def get_User_by_id(cls,id):
         usser = cls.objects.get(id=id)
         return usser
+
+
+
+
 
 class Establishment(models.Model):
     name = models.CharField(max_length=50)
