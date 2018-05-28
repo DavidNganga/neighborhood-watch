@@ -15,5 +15,5 @@ class NeighborhoodForm(forms.ModelForm):
 class BusinessForm(forms.ModelForm):
     class Meta:
         model = Business
-        fields=['name','email','neighborhood','user']
+        fields=['name','email','neighborhood','user','description']
         exclude =[]
