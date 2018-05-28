@@ -1,7 +1,9 @@
 from django.shortcuts import render,redirect
-from .forms import ProfileForm,NeighborhoodForm,BusinessForm
-from .models import User,Neighborhood,Business,Parastatal
+from .forms import ProfileForm,NeighborhoodForm,EstablishmentForm
+from .models import User,Neighborhood,Establishment,Parastatal
+from django.contrib.auth.decorators import login_required
 # Create your views here.
+@login_required
 def watch(request):
     neighborhoods = Neighborhood.objects.all()
     businesses = Business.objects.all()
@@ -23,7 +25,7 @@ def profile(request):
 def search(request):
     if 'name' in request.GET and request.GET["name"]:
         search_term = request.GET.get("name")
-        
+
         neighborhoods = Neighborhood.search(search_term)
         message = f"{search_term}"
         print(neighborhoods)
@@ -34,7 +36,7 @@ def search(request):
 
 def post(request):
     current_user = request.user.id
-    
+
     if request.method == 'POST':
         form = NeighborhoodForm(request.POST,request.FILES)
         if form.is_valid():
@@ -69,9 +71,3 @@ def viewbusiness(request):
     # neighborhoods= Neighborhood.objects.all()
     businesses=Business.objects.all()
     return render(request,'viewbusiness.html',{"businesses":businesses})
-
-
-
-
-
-

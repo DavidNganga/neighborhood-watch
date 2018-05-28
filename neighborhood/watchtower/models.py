@@ -54,7 +54,7 @@ class Profile(models.Model):
         usser = cls.objects.get(id=id)
         return usser
 
-class Business(models.Model):
+class Establishment(models.Model):
     name = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
     user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
@@ -63,19 +63,19 @@ class Business(models.Model):
 
     @classmethod
     def get_all(cls):
-        businesses = cls.objects.all()
-        return businesses
+        establishments = cls.objects.all()
+        return establishments
 
     def __str__(self):
         return self.name
 
-    def save_business(self):
+    def save_establishment(self):
         self.save()
 
-    def delete_business(self):
+    def delete_establishment(self):
         self.delete()
 
-    def get_Business_by_id(cls,id):
+    def get_Establishment_by_id(cls,id):
         bags = cls.objects.get(id=id)
         return bags
 
