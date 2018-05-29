@@ -45,7 +45,6 @@ def post(request):
         form = NeighborhoodForm(request.POST,request.FILES)
         if form.is_valid():
             neighborhood = form.save(commit=False)
-            # Post.user = current_user
             neighborhood.save()
             return redirect('watch')
     else:
@@ -58,7 +57,6 @@ def establishment(request):
         form = EstablishmentForm(request.POST,request.FILES)
         if form.is_valid():
             establishment = form.save(commit=False)
-            # Post.user = current_user
             establishment.save()
             return redirect('watch')
     else:
@@ -72,7 +70,6 @@ def viewpost(request):
 
 def viewestablishment(request):
     current_user=request.user
-    # neighborhoods= Neighborhood.objects.all()
     establishments=Establishment.objects.all()
     return render(request,'viewestablishment.html',{"establishments":establishments})
 
@@ -83,7 +80,6 @@ def viewprofile(request, profile_id):
     current_user = request.user
     current_user.id=request.user.id
     Profile.user = current_user
-    # profile1=Profile.objects.get(id=profile_id)
     pics = Profile.objects.filter(id = profile_id)
 
     return render(request, 'viewprofile.html',{"pics":pics, id:profile_id})

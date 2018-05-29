@@ -5,23 +5,17 @@
 {% block styles %} {% bootstrap_css %}
  <link rel="stylesheet" href="{% static 'css/base.css' %}"> {% endblock %}
 
-
-
  <div class="container-fluid mt-4">
-        <div class="jumbotron mt-4">
+  <div class="jumbotron mt-4">
           <h1 class="display-4 text-center">Neighborhood Watch!</h1>
           <p class="lead text-center">We see everything!</p>
-</div>
+ </div>
 </div>
 <br>
 
-
-
-
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-
+<div class="row">
+<div class="col-md-12">
 <h3 class="text-center">
   {% for profile in profiles%}
   <a class="btn btn-primary btn-lg"  href="{%url 'viewprofile' profile.id %}" role="button" aria-expanded="false" aria-controls="collapseExample">Profile</a>
@@ -36,8 +30,6 @@
 </div>
 </div>
 
-
-
 {% for neighborhood in neighborhoods %}
 
     <div class="container-fluid mt-4">
@@ -51,9 +43,8 @@
         <p class="ml-2" style="display:inline; white-space:nowrap; font-size:25px;">{{neighborhood.event_details}}</p>
         <br>
         <br>
-
-</div>
-</div>
+   </div>
+  </div>
 
 {%endfor%}
 

@@ -8,7 +8,6 @@ class Neighborhood(models.Model):
     event_details = models.TextField(max_length=50)
     user=models.ForeignKey(User)
 
-
     @classmethod
     def get_all(cls):
         hoods = cls.objects.all()
@@ -31,6 +30,7 @@ class Neighborhood(models.Model):
     def search(cls,search_term):
          names = cls.objects.filter(name__icontains=search_term)
          return names
+
 
 class Profile(models.Model):
     name = models.CharField(max_length=50)
@@ -56,9 +56,6 @@ class Profile(models.Model):
     def get_User_by_id(cls,id):
         usser = cls.objects.get(id=id)
         return usser
-
-
-
 
 
 class Establishment(models.Model):
