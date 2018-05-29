@@ -6,6 +6,9 @@ from django.contrib.auth.models import User
 # Create your views here.
 @login_required
 def watch(request):
+    '''
+    function to call methods in the home page
+    '''
     current_user=request.user
     profiles = Profile.objects.all()
     neighborhoods = Neighborhood.objects.all().filter(user=current_user)
@@ -14,6 +17,9 @@ def watch(request):
     return render(request, 'index.html',{"establishments":establishments,"posts":posts,"neighborhoods":neighborhoods,"profiles":profiles})
 
 def profile(request):
+    '''
+    function that saves users profile
+    '''
     current_user = request.user
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES)
@@ -27,6 +33,9 @@ def profile(request):
     return render(request, 'profile.html', {"form": form})
 
 def search(request):
+    '''
+    function that searching for all businesses
+    '''
     if 'name' in request.GET and request.GET["name"]:
         search_term = request.GET.get("name")
 
@@ -64,11 +73,16 @@ def establishment(request):
     return render(request, 'establishment.html',{"form":form})
 
 def viewpost(request):
-
+    '''
+    function for viewing posts created
+    '''
     neighborhood = Neighborhood.objects.get()
     return render(request,'viewpost.html',{"neighborhood":neighborhood})
 
 def viewestablishment(request):
+    '''
+    function for viewing establishments posted in the neighborhoods
+    '''
     current_user=request.user
     establishments=Establishment.objects.all()
     return render(request,'viewestablishment.html',{"establishments":establishments})
