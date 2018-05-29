@@ -27,9 +27,7 @@
         <div class="col-md-12">
 
 <h3 class="text-center">
-{%for neighborhood in neighborhoods  %}
-    <a class="btn btn-primary btn-lg"  href="{%url 'viewpost' neighborhood.id%}" role="button" aria-expanded="false" aria-controls="collapseExample">view posts</a>
-{%endfor%}
+
     <a class="btn btn-primary btn-lg"  href="{%url 'profile'%}" role="button" aria-expanded="false" aria-controls="collapseExample">Join The Watch</a>
     <a class="btn btn-primary btn-lg"  href="{%url 'post'%}" role="button" aria-expanded="false" aria-controls="collapseExample">Snitch</a>
     <a class="btn btn-primary btn-lg"  href="{%url 'establishment'%}" role="button" aria-expanded="false" aria-controls="collapseExample">Establishments</a>
@@ -38,9 +36,28 @@
 </div>
 </div>
 </div>
+<!-- {%for neighborhood in neighborhoods  %}
+    <a class="btn btn-primary btn-lg"  href="{%url 'viewpost' neighborhood.id%}" role="button" aria-expanded="false" aria-controls="collapseExample">view posts</a>
+{%endfor%} -->
 
 
+{% for neighborhood in neighborhoods %}
 
+    <div class="container-fluid mt-4">
+      <div class="jumbotron mt-4">
+        <p class="ml-2" style="display:inline; white-space:nowrap; font-size:25px;"> {{neighborhood.name}} </p>
+        <br>
+        <br>
+        <p class="ml-2" style="display:inline; white-space:nowrap; font-size:25px;">{{neighborhood.location}}</p>
+        <br>
+        <br>
+        <p class="ml-2" style="display:inline; white-space:nowrap; font-size:25px;">{{neighborhood.event_details}}</p>
+        <br>
+        <br>
+        
+</div>
+</div>
 
+{%endfor%}
 
 {% endblock %}
