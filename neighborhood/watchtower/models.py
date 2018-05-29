@@ -93,3 +93,9 @@ class Parastatal(models.Model):
     name = models.CharField(max_length=50)
     neighborhood = models.ForeignKey(Neighborhood, related_name='neighbor_parastatal',null=True)
     phone_number = models.IntegerField()
+
+class Post(models.Model):
+    name= models.CharField(max_length=50)
+    location=models.CharField(max_length=50)
+    event_details = models.TextField(max_length=50)
+    user=models.ForeignKey(User)

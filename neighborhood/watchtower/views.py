@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from .forms import ProfileForm,NeighborhoodForm,EstablishmentForm
-from .models import User,Neighborhood,Establishment,Parastatal,Profile
+from .forms import ProfileForm,PostForm,EstablishmentForm,CreateNeighborhoodForm
+from .models import User,Neighborhood,Establishment,Parastatal,Profile,Post
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 # Create your views here.
@@ -11,10 +11,10 @@ def watch(request):
     '''
     current_user=request.user
     profiles = Profile.objects.all()
-    neighborhoods = Neighborhood.objects.all().filter(user=current_user)
-    posts = Neighborhood.objects.all()
+    # neighborhoods = Neighborhood.objects.all()
+    posts = Post.objects.all()
     establishments =Establishment.objects.all()
-    return render(request, 'index.html',{"establishments":establishments,"posts":posts,"neighborhoods":neighborhoods,"profiles":profiles})
+    return render(request, 'index.html',{"establishments":establishments,"posts":posts,"profiles":profiles})
 
 def profile(request):
     '''
@@ -51,13 +51,13 @@ def post(request):
     current_user = request.user.id
 
     if request.method == 'POST':
-        form = NeighborhoodForm(request.POST,request.FILES)
+        form = PostForm(request.POST,request.FILES)
         if form.is_valid():
-            neighborhood = form.save(commit=False)
-            neighborhood.save()
+            post = form.save(commit=False)
+            post.save()
             return redirect('watch')
     else:
-        form = NeighborhoodForm()
+        form = PostForm()
     return render(request, 'post.html',{"form":form})
 
 def establishment(request):
@@ -76,8 +76,8 @@ def viewpost(request):
     '''
     function for viewing posts created
     '''
-    neighborhood = Neighborhood.objects.get()
-    return render(request,'viewpost.html',{"neighborhood":neighborhood})
+    post = Post.objects.get()
+    return render(request,'viewpost.html',{"post":post})
 
 def viewestablishment(request):
     '''
@@ -101,3 +101,21 @@ def viewprofile(request, profile_id):
 def profiledetails(request,profile_id):
     image = Profile.objects.all()
     return render(request,'profiledetails.html',{"image":image,id:profile_id})
+
+def create_neighbourhood(request):
+    '''
+    function for user to create neighbourhood
+    '''
+
+    current_user=request.user
+    if request.method=='POST':
+        form=CreateNeighborhoodForm(request.POST)
+        if form.is_valid():
+            neighbourhood=form.save(commit=False)
+            neighbourhood.user = current_user
+            neighbourhood.save()
+
+            return redirect('watch')
+    else:
+        form=CreateNeighborhoodForm()
+    return render(request, 'neighborhoodprofile.html', {"form":form})

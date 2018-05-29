@@ -17,11 +17,11 @@
 <div class="row">
 <div class="col-md-12">
 <h3 class="text-center">
-  {% for profile in profiles%}
-  <a class="btn btn-primary btn-lg"  href="{%url 'viewprofile' profile.id %}" role="button" aria-expanded="false" aria-controls="collapseExample">Profile</a>
-  {% endfor%}
+  <!-- {% for profile in profiles%}
+  <a class="btn btn-primary btn-lg"  href="" role="button" aria-expanded="false" aria-controls="collapseExample">Profile</a>
+  {% endfor%} -->
     <a class="btn btn-primary btn-lg"  href="{%url 'profile'%}" role="button" aria-expanded="false" aria-controls="collapseExample">Join The Watch</a>
-    <a class="btn btn-primary btn-lg"  href="{%url 'viewpost'%}" role="button" aria-expanded="false" aria-controls="collapseExample">View Posts</a>
+    <!-- <a class="btn btn-primary btn-lg"  href="" role="button" aria-expanded="false" aria-controls="collapseExample">View Posts</a> -->
     <a class="btn btn-primary btn-lg"  href="{%url 'post'%}" role="button" aria-expanded="false" aria-controls="collapseExample">Snitch</a>
     <a class="btn btn-primary btn-lg"  href="{%url 'establishment'%}" role="button" aria-expanded="false" aria-controls="collapseExample">Establishments</a>
     <a class="btn btn-primary btn-lg"  href="{%url 'viewestablishment'%}" role="button" aria-expanded="false" aria-controls="collapseExample">View Establishments</a>
@@ -30,17 +30,17 @@
 </div>
 </div>
 
-{% for neighborhood in neighborhoods %}
+{% for post in posts %}
 
     <div class="container-fluid mt-4">
       <div class="jumbotron mt-4">
-        <p class="ml-2" style="display:inline; white-space:nowrap; font-size:25px;"> {{neighborhood.name}} </p>
+        <p class="ml-2" style="display:inline; white-space:nowrap; font-size:25px;"> {{post.name}} </p>
         <br>
         <br>
-        <p class="ml-2" style="display:inline; white-space:nowrap; font-size:25px;">{{neighborhood.location}}</p>
+        <p class="ml-2" style="display:inline; white-space:nowrap; font-size:25px;">{{post.location}}</p>
         <br>
         <br>
-        <p class="ml-2" style="display:inline; white-space:nowrap; font-size:25px;">{{neighborhood.event_details}}</p>
+        <p class="ml-2" style="display:inline; white-space:nowrap; font-size:25px;">{{post.event_details}}</p>
         <br>
         <br>
    </div>

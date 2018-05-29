@@ -14,6 +14,7 @@ urlpatterns=[
     url(r'^establishment/', views.establishment, name='establishment'),
     url(r'^profiledetails/(\d+)', views.profiledetails, name='profiledetails'),
     url(r'^viewestablishment/', views.viewestablishment, name='viewestablishment'),
+    url(r'^neighbourhoodprofile/', views.create_neighbourhood, name='neighbourhoodprofile'),
 
 ]
 if settings.DEBUG:
