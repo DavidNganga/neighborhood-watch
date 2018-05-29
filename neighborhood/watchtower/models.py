@@ -7,7 +7,7 @@ class Neighborhood(models.Model):
     no_occupants=models.IntegerField(null=True)
     event_details = models.TextField(max_length=50)
     user=models.ForeignKey(User)
-    
+
 
     @classmethod
     def get_all(cls):
@@ -37,6 +37,7 @@ class Profile(models.Model):
     neighborhood = models.ForeignKey(Neighborhood, related_name='user_nieghborhood',null=True)
     email=models.CharField(max_length=50)
     user = models.OneToOneField(User, on_delete=models.CASCADE,null=True)
+    profile_photo = models.ImageField(upload_to = 'images/',null = True)
 
     @classmethod
     def get_all(cls):

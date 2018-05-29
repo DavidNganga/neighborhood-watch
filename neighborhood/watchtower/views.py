@@ -1,16 +1,17 @@
 from django.shortcuts import render,redirect
 from .forms import ProfileForm,NeighborhoodForm,EstablishmentForm
-from .models import User,Neighborhood,Establishment,Parastatal
+from .models import User,Neighborhood,Establishment,Parastatal,Profile
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 # Create your views here.
 @login_required
 def watch(request):
     current_user=request.user
+    profiles = Profile.objects.all()
     neighborhoods = Neighborhood.objects.all().filter(user=current_user)
     posts = Neighborhood.objects.all()
     establishments =Establishment.objects.all()
-    return render(request, 'index.html',{"establishments":establishments,"posts":posts,"neighborhoods":neighborhoods})
+    return render(request, 'index.html',{"establishments":establishments,"posts":posts,"neighborhoods":neighborhoods,"profiles":profiles})
 
 def profile(request):
     current_user = request.user
@@ -74,3 +75,19 @@ def viewestablishment(request):
     # neighborhoods= Neighborhood.objects.all()
     establishments=Establishment.objects.all()
     return render(request,'viewestablishment.html',{"establishments":establishments})
+
+def viewprofile(request, profile_id):
+    '''
+    view function for displaying a user's profile page
+    '''
+    current_user = request.user
+    current_user.id=request.user.id
+    Profile.user = current_user
+    # profile1=Profile.objects.get(id=profile_id)
+    pics = Profile.objects.filter(id = profile_id)
+
+    return render(request, 'viewprofile.html',{"pics":pics, id:profile_id})
+
+def profiledetails(request,profile_id):
+    image = Profile.objects.all()
+    return render(request,'profiledetails.html',{"image":image,id:profile_id})
