@@ -9,7 +9,7 @@ urlpatterns=[
     url(r'^profile/', views.profile, name='profile'),
     url(r'^search/', views.search, name='search'),
     url(r'^post/', views.post, name='post'),
-    url(r'^viewpost/(\d+)', views.viewpost, name='viewpost'),
+    url(r'^viewpost/', views.viewpost, name='viewpost'),
     url(r'^establishment/', views.establishment, name='establishment'),
     url(r'^viewestablishment/', views.viewestablishment, name='viewestablishment'),
 

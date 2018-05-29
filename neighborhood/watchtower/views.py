@@ -64,10 +64,10 @@ def establishment(request):
         form = EstablishmentForm()
     return render(request, 'establishment.html',{"form":form})
 
-def viewpost(request,neighborhood_id):
+def viewpost(request):
 
-    neighborhood = Neighborhood.objects.get(id = neighborhood_id)
-    return render(request,'viewpost.html',{id:neighborhood_id,"neighborhood":neighborhood})
+    neighborhood = Neighborhood.objects.get()
+    return render(request,'viewpost.html',{"neighborhood":neighborhood})
 
 def viewestablishment(request):
     current_user=request.user
