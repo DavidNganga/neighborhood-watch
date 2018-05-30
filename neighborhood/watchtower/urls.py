@@ -10,9 +10,9 @@ urlpatterns=[
     url(r'^search/', views.search, name='search'),
     url(r'^post/', views.post, name='post'),
     url(r'^viewpost/', views.viewpost, name='viewpost'),
-    url(r'^viewprofile/(\d+)', views.viewprofile, name='viewprofile'),
+    url(r'^viewprofile/', views.viewprofile, name='viewprofile'),
     url(r'^establishment/', views.establishment, name='establishment'),
-    url(r'^profiledetails/(\d+)', views.profiledetails, name='profiledetails'),
+    url(r'^profiledetails/(?P<id>\d+)', views.profiledetails, name='profiledetails'),
     url(r'^viewestablishment/', views.viewestablishment, name='viewestablishment'),
     url(r'^neighbourhoodprofile/', views.create_neighbourhood, name='neighbourhoodprofile'),
 

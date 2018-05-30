@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404, get_list_or_404
 from .forms import ProfileForm,PostForm,EstablishmentForm,CreateNeighborhoodForm
 from .models import User,Neighborhood,Establishment,Parastatal,Profile,Post
 from django.contrib.auth.decorators import login_required
@@ -21,6 +21,7 @@ def profile(request):
     function that saves users profile
     '''
     current_user = request.user
+
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
@@ -87,16 +88,18 @@ def viewestablishment(request):
     establishments=Establishment.objects.all()
     return render(request,'viewestablishment.html',{"establishments":establishments})
 
-def viewprofile(request, profile_id):
+def viewprofile(request):
     '''
     view function for displaying a user's profile page
     '''
     current_user = request.user
     current_user.id=request.user.id
+    # profile_id=get_object_or_404(Profile, id=id)
+    # print(profile_id)
     Profile.user = current_user
-    pics = Profile.objects.filter(id = profile_id)
+    pics = Profile.objects.filter(user= current_user)
 
-    return render(request, 'viewprofile.html',{"pics":pics, id:profile_id})
+    return render(request, 'viewprofile.html',{"pics":pics})
 
 def profiledetails(request,profile_id):
     image = Profile.objects.all()
