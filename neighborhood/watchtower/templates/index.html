@@ -17,14 +17,11 @@
 <div class="row">
 <div class="col-md-12">
 <h3 class="text-center">
-  <!-- {% for profile in profiles%}
-  <a class="btn btn-primary btn-lg"  href="" role="button" aria-expanded="false" aria-controls="collapseExample">Profile</a>
-  {% endfor%} -->
+
     <a class="btn btn-primary btn-lg"  href="{%url 'profile'%}" role="button" aria-expanded="false" aria-controls="collapseExample">Join The Watch</a>
-    <!-- <a class="btn btn-primary btn-lg"  href="" role="button" aria-expanded="false" aria-controls="collapseExample">View Posts</a> -->
     <a class="btn btn-primary btn-lg"  href="{%url 'post'%}" role="button" aria-expanded="false" aria-controls="collapseExample">What's happening</a>
     <a class="btn btn-primary btn-lg"  href="{%url 'establishment'%}" role="button" aria-expanded="false" aria-controls="collapseExample">Register Establishments</a>
-    <!-- <a class="btn btn-primary btn-lg"  href="{%url 'viewestablishment'%}" role="button" aria-expanded="false" aria-controls="collapseExample">View Establishments</a> -->
+
 </h3>
 </div>
 </div>
@@ -34,17 +31,19 @@
 
     <div class="container-fluid mt-4">
       <div class="jumbotron mt-4">
-        <p class="ml-2" style="display:inline; white-space:nowrap; font-size:25px;"> {{post.name}} </p>
+        <p class="ml-2" style="display:inline; white-space:nowrap; font-size:25px;">Neighborhood: {{post.name}} </p>
         <br>
         <br>
-        <p class="ml-2" style="display:inline; white-space:nowrap; font-size:25px;">{{post.location}}</p>
+        <p class="ml-2" style="display:inline; white-space:nowrap; font-size:25px;">Where:{{post.location}}</p>
         <br>
         <br>
-        <p class="ml-2" style="display:inline; white-space:nowrap; font-size:25px;">{{post.event_details}}</p>
+        <p class="ml-2" style="display:inline; white-space:nowrap; font-size:25px;">Details:{{post.event_details}}</p>
         <br>
         <br>
    </div>
   </div>
+
+
 
 {%endfor%}
 
