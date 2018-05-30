@@ -4,7 +4,7 @@ from django import forms
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields=['name','neighborhood','email']
+        fields=['name','neighborhood','email','profile_photo']
         exclude =['user']
 
 class PostForm(forms.ModelForm):

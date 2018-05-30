@@ -4,7 +4,7 @@ from .models import User,Neighborhood,Establishment,Parastatal,Profile,Post
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 # Create your views here.
-@login_required
+@login_required(login_url='/accounts/login')
 def watch(request):
     '''
     function to call methods in the home page
@@ -15,7 +15,7 @@ def watch(request):
     posts = Post.objects.all()
     establishments =Establishment.objects.all()
     return render(request, 'index.html',{"establishments":establishments,"posts":posts,"profiles":profiles})
-
+@login_required
 def profile(request):
     '''
     function that saves users profile
