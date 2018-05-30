@@ -4,9 +4,9 @@
 
   <div class="row">
     {% if establishments%}
-      <!-- <h2>Found {{ neighborhoods|length }}  {{message}}</h2> -->
+
     {% else %}
-       <h2> Found 0 establishments {{message}}</h2> 
+       <h2> Found 0 establishments {{message}}</h2>
     {% endif %}
     </div>
 
@@ -20,7 +20,7 @@
       <div class="col- mx-auto p-5" style="background-color:#ffffff; border: 1px solid #e6e6e6;">
         <div class="profile p-4" style="white-space:nowrap">
               <h1> {{message}}</h1>
-              <!-- <h2>Event:{{neighborhood.event_details}}</h2> -->
+          
               <p><a href="{%url 'viewestablishment' %}">more details</a></p>
 
         </div>
